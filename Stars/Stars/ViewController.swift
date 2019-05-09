@@ -9,12 +9,38 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var nameTextField:       UITextField!
+    @IBOutlet weak var distanceTextField:   UITextField!
+    @IBOutlet weak var textView:            UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+         
     }
 
-
+    let starController = StarController()
+    
+    @IBAction func addStarBtnPressed(_ sender: UIButton) {
+        guard let name = nameTextField.text,
+            let distanceString = distanceTextField.text,
+            let distance = Double(distanceString) else {
+                return
+                
+        }
+        starController.addStar(named: name, withDistance: distance)
+        listStars()
+    }
+    
+    func listStars() {
+        var output = ""
+        
+        for star in starController.stars {
+            output += "\(star.name) is \(star.distance) light years away. \n"
+        }
+        textView.text = output
+    }
+    
 }
 
