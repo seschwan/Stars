@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        listStars()
          
     }
 
@@ -31,6 +32,12 @@ class ViewController: UIViewController {
         }
         starController.addStar(named: name, withDistance: distance)
         listStars()
+        clearTextFields()
+    }
+    
+    private func clearTextFields() {
+        nameTextField.text = nil
+        distanceTextField.text = nil
     }
     
     func listStars() {
