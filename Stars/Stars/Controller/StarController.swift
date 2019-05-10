@@ -8,6 +8,12 @@
 
 import Foundation
 
+// C.R.U.D
+// 1. Create
+// 2. Read
+// 3. Update
+// 4. Delete
+
 class StarController {
     
     init() {
@@ -31,6 +37,7 @@ class StarController {
     }
     
     
+    
     // Save to disk
     func saveToPersistentStore() {
         guard let url = persistentURL else { return }
@@ -51,8 +58,10 @@ class StarController {
         guard let url = persistentURL, fileManager.fileExists(atPath: url.path) else { return }
         
         do {
+            // Get the data
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
+            // Decode the data as array of Stars
             stars = try decoder.decode([Star].self, from: data)
         } catch {
             print("Error loading data from disk: \(error)")

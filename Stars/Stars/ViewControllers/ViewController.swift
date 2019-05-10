@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         distanceTextField.text = nil
     }
     
-    func listStars() {
+    private func listStars() {
         var output = ""
         
         for star in starController.stars {
